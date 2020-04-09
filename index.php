@@ -1,36 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Register System PHP</title>
-    <link rel="stylesheet" href="bootstrap.css">
-    <script src="jquery.js"></script>
-    <script src="bootstrap.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <nav class = "navbar navbar-default">
-            <div class="container-fluid" >
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.php">Login Register System PHP and PDO</a>
-                </div>
-                <ul class="nav navbar-nav pull-right">
-                <li><a href="profile.php">Profile</a></li>
-                    <li><a href="profile.php">Logout</a></li>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="register.php">Register</a></li>
-                </ul>
-            </div>
-        </nav>
-    Body Text
-    
-    <div class="well">
-        <h3>AsmitJoy.Shovon.net
-            <span class="pull-right">Like Us:AsmitJoy</span>
-        </h3>
-    </div>
+<!--Header-->
+<?php include 'header.php'?>
 
-    </div>
-</body>
-</html>
+        <!--Body-->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2>User list <span class="pull-right"><strong>Welcome!</strong></span></h2>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                    <th width="20%">Serial</th>
+                    <th width="20%">Name</th>
+                    <th width="20%">Username</th>
+                    <th width="20%">Email Address</th>
+                    <th width="20%">Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Shovon Das </td>
+                        <td>SS</td>
+                        <td>shovoncse@gmail.com</td>
+                        <td><a class="btn btn-warning" href="profile.php">view</a></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Asmit Das Joy</td>
+                        <td>joy</td>
+                        <td>aj13@gmail.com</td>
+                        <td><a class="btn btn-warning" href="profile.php">view</a></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Anik Das </td>
+                        <td>anik</td>
+                        <td>anika@gmail.com</td>
+                        <td><a class="btn btn-warning" href="profile.php">view</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!--Footer-->
+        <?php include 'footer.php'?>
