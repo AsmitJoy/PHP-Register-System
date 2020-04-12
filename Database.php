@@ -1,7 +1,13 @@
 <?php
     class Database{
-        public function __construct(argument) {
+            private $hostdb ="localhost";
+            private $userdb ="root";
+            private $passdb ="";
+            private $namedb ="login_regis";
+            public $pdo;
 
+        public function __construct() {
+            if
         }
         
     }
