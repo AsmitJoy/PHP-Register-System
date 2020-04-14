@@ -1,5 +1,13 @@
 <!--Header-->
 <?php include 'header.php'?>
+<?php include 'user.php'?>
+<?
+    $user = new User();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
+        $userRegi = $user->userRegistration($_POST );
+    }
+     
+?>
 
         <!--Body-->
         <div class="panel panel-default">
@@ -13,11 +21,11 @@
                             <form action="#" method="post">
                                 <div class="form-group">
                                     <label for="name">Your name</label>
-                                    <input class="form-control" type="text" id="name" name="email" required>
+                                    <input class="form-control" type="text" id="name" name="name" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input class="form-control" type="text" id="username" name="email" required>
+                                    <input class="form-control" type="text" id="username" name="username" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
