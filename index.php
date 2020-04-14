@@ -1,5 +1,6 @@
 <!--Header-->
 <?php include 'header.php'?>
+<?php include 'user.php'?>
 
         <!--Body-->
         <div class="panel panel-default">
