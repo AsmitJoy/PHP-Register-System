@@ -1,9 +1,9 @@
 <!--Header-->
-<?php include 'header.php'?>
-<?php include 'User.php'?>
-<?
+<?php include 'header.php';
+ include 'User.php';
+
     $user = new User();
-    if (isset($_POST['register'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['register'])) {
         $userRegi = $user->userRegistration($_POST);
     }
      
