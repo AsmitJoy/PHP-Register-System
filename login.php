@@ -1,12 +1,24 @@
 <!--Header-->
-<?php include 'header.php'?>
+<?php include 'header.php';
+ include 'User.php';
 
+    $user = new User();
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+        $userLogin = $user->userLogin($_POST);
+    }
+     
+?>
         <!--Body-->
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h2>User Login</h2>
             </div>
             <div class="panel-body">
+            <?php
+                if (isset($userLogin)) {
+                    echo $userLogin;
+                }
+            ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 col-md-offset-3">
