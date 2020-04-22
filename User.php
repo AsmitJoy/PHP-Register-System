@@ -37,7 +37,20 @@
                 $msg  = "<div class='alert alert-danger'><strong>Error!:</strong>The email is already exists</div>";
                 return $msg;  
             }
-            
+            $sql = "INSERT INTO login_regis.tbl_user (name, username, email, password) VALUES (:name,:username, :email,:password)";
+            $query = $this->db->pdo->prepare($sql);
+            $query->bindValue(':name',$name);
+            $query->bindValue(':username',$username);
+            $query->bindValue(':email',$email);
+            $query->bindValue(':password',$password);
+            $result = $query->execute();
+            if ($result) {
+                $msg  = "<div class='alert alert-success'><strong>Success ! </strong>Thank you,You have been succesfully registered</div>";
+                return $msg;  
+            }else{
+                $msg  = "<div class='alert alert-danger'><strong>Error ! </strong>Sorry, there is a problem inserting your details </div>";
+                return $msg;
+            }
         }
 
         public function emailCheck($email){
@@ -50,7 +63,18 @@
             }else{
                 return false; 
             }
-        }            
+        }
+        
+        public function userLogin(){
+            $email = $data['email'];
+            $password = md5($data['password']);
+
+         
+            if ($name == "" OR $username == "" OR $email == "" OR $password == "" ) {
+                $msg  = "<div class='alert alert-danger'><strong>Error!:</strong>Field must not be empty</div>";
+                return $msg;
+            }
+        }
     }
    
 ?>
