@@ -1,10 +1,10 @@
 <!--Header-->
 <?php include 'header.php';
- include 'User.php';
+    include 'User.php';
 
     $user = new User();
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-        $userLogin = $user->userLogin($_POST);
+        $user_Login = $user->userLogin($_POST);
     }
      
 ?>
@@ -15,21 +15,21 @@
             </div>
             <div class="panel-body">
             <?php
-                if (isset($userLogin)) {
-                    echo $userLogin;
+                if (isset($user_Login)) {
+                    echo $user_Login;
                 }
             ?>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 col-md-offset-3">
-                            <form action="#" method="post">
+                            <form action="#" method="POST">
                                 <div class="form-group">
                                     <label for="email">Email Address</label>
-                                    <input class="form-control" type="text" id="email" name="email" required>
+                                    <input class="form-control" type="text" id="email" name="email" >
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input class="form-control" type="text" id="password" name="password" required>
+                                    <input class="form-control" type="text" id="password" name="password" >
                                 </div>
                                 <button class="btn btn-danger" type="submit" name="login">Login</button>
                             </form>
