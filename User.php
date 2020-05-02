@@ -64,14 +64,48 @@
                 return false; 
             }
         }
+
+        public function getLoginUser($email,$password){
+            $sql = "SELECT * FROM login_regis.tbl_user WHERE email = :email AND password = :password LIMIT  1"; 
+            $query = $this->db->pdo->prepare($sql);
+            $query->bindValue(':email',$email);
+            $query->bindValue(':password',$password);
+            $query->execute();
+
+            $result = $query->fetch(PDO::FETCH_OBJ);
+            return $result;
+        }
         
-        public function userLogin(){
+        public function userLogin($data){
             $email = $data['email'];
             $password = md5($data['password']);
 
-         
-            if ($name == "" OR $username == "" OR $email == "" OR $password == "" ) {
+            $chk_email = $this->emailCheck($email);
+
+            if ($email == "" OR $password == "" ) {
                 $msg  = "<div class='alert alert-danger'><strong>Error!:</strong>Field must not be empty</div>";
+                return $msg;
+            }
+            if (filter_var($email, FILTER_VALIDATE_EMAIL)=== false) {
+                $msg  = "<div class='alert alert-danger'><strong>Error!:</strong>The email address is not valid</div>";
+                return $msg;          
+            }
+            if ($chk_email == false) {
+                $msg  = "<div class='alert alert-danger'><strong>Error!:</strong>The email is already exists</div>";
+                return $msg;  
+            }
+
+            $result = $this->getLoginUser($email, $password);
+            if ($result) {
+                Session::init();
+                Session::set("login",true);
+                Session::set("id",$result->id);
+                Session::set("name",$result->name);
+                Session::set("username",$result->username);
+                Session::set("loginmsg","<div class='alert alert-success'><strong>Success!:</strong>You are logged in</div>");
+
+            }else{
+                $msg  = "<div class='alert alert-danger'><strong>Error!:</strong>Data not found</div>";
                 return $msg;
             }
         }
